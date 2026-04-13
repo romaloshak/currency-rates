@@ -1,6 +1,7 @@
-import { isNil } from '@/shared/lib/utils/common';
+import { formattedPairToLink, isNil } from '@/shared/lib/utils/common';
 import { ParsedRateResponse } from '@/shared/model';
 import { Temporal } from '@js-temporal/polyfill';
+import Link from 'next/link';
 
 export function CurrencyCard(rate: ParsedRateResponse) {
   if (isNil(rate)) {
@@ -13,13 +14,15 @@ export function CurrencyCard(rate: ParsedRateResponse) {
   const change = price - open;
   const changePercent = open > 0 ? (change / open) * 100 : 0;
   const isPositive = change >= 0;
+
   const date = Temporal.PlainDate.from(datetime);
   const formatted = date.toLocaleString('ru-RU');
 
-  console.log(formatted);
-
   return (
-    <div className='rounded-lg border border-zinc-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900'>
+    <Link
+      className='rounded-lg border border-zinc-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900'
+      href={`currency/${formattedPairToLink(symbol)}`}
+    >
       <div className='mb-3 flex items-center justify-between'>
         <span className='font-semibold text-zinc-900 dark:text-zinc-100'>{symbol}</span>
         <span
@@ -41,6 +44,6 @@ export function CurrencyCard(rate: ParsedRateResponse) {
         <span>H: {high.toFixed(4)}</span>
         <span>L: {low.toFixed(4)}</span>
       </div>
-    </div>
+    </Link>
   );
 }
