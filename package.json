@@ -10,6 +10,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
     "@tanstack/react-query": "^5.99.0",
     "@tanstack/react-query-devtools": "^5.99.0",
     "classnames": "^2.5.1",

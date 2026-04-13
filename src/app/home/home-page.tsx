@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { CURRENCY_PAIRS } from '@/shared/constants';
 
 export function HomePage() {
-  console.log(CURRENCY_PAIRS.join(','));
   const { data: rates, isLoading, error } = useRates(CURRENCY_PAIRS.join(','));
+
   console.log(rates);
 
   return (

@@ -10,6 +10,10 @@ export type RateValue = {
   close: string;
 };
 
+export type ParsedRate = {
+  [K in keyof RateValue]: K extends 'datetime' ? string : number;
+};
+
 export type RateMeta = {
   symbol: string;
   interval: string;
@@ -22,6 +26,10 @@ export type RateResponse = {
   values: RateValue[];
   meta: RateMeta;
   status?: string;
+};
+
+export type ParsedRateResponse = Omit<RateResponse, 'values'> & {
+  values: ParsedRate[];
 };
 
 export type MultiRateResponse = {
