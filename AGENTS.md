@@ -22,6 +22,9 @@ FSD. Documentation - https://feature-sliced.design/docs/get-started/overview
 - Use function components, not classes
 - Follow existing naming patterns in the codebase
 - Use ESLint and Prettier for code formatting
+- Use Type as main type assertion
+- Use classname library to keep clean class names
+- Remember about accessibility and use at least sematic tags
 
 ## Commands
 
