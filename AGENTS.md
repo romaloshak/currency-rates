@@ -25,6 +25,10 @@ FSD. Documentation - https://feature-sliced.design/docs/get-started/overview
 - Use Type as main type assertion
 - Use classname library to keep clean class names
 - Remember about accessibility and use at least sematic tags
+- To create a page:
+
+1. Make a file for it and for page component;
+2. Make another file in folder src/pages to follow FSD patterns
 
 ## Commands
 

@@ -1,24 +1,29 @@
+import { scaleLinear } from 'd3-scale';
+import { line, curveMonotoneX } from 'd3-shape';
+import { extent } from 'd3-array';
 import { ParsedRate } from '@/shared/model';
 
-export const getSvgPoints = (data: ParsedRate[], width: number = 100, height: number = 100) => {
-  if (data.length < 2) return '';
-
+export const getChartMath = (data: ParsedRate[], padding: number) => {
   const prices = data.map((rate) => rate.close);
-  const minPrice = Math.min(...prices);
-  const maxPrice = Math.max(...prices);
-  const priceRange = maxPrice - minPrice;
+  const [min, max] = extent(prices);
 
-  return data
-    .map((point, index) => {
-      // X is just the index spread across the width
-      const x = (index / (data.length - 1)) * width;
+  const domain = [min ?? 0, max ?? 100];
 
-      // Y calculation:
-      // We subtract from 'height' because SVG (0,0) is TOP-left.
-      // If we don't subtract, the chart will be upside down!
-      const y = height - ((point.close - minPrice) / priceRange) * height;
+  const xScale = scaleLinear()
+    .domain([0, data.length - 1])
+    .range([padding, 100 - padding]);
 
-      return `${x},${y}`;
-    })
-    .join(' ');
+  const yScale = scaleLinear()
+    .domain(domain)
+    .nice()
+    .range([100 - padding, padding]);
+
+  const lineGenerator = line<number>()
+    .x((_, i) => xScale(i))
+    .y((d) => yScale(d))
+    .curve(curveMonotoneX);
+
+  const ticks = yScale.ticks(5);
+
+  return { xScale, yScale, linePath: lineGenerator(prices) ?? undefined, ticks };
 };
