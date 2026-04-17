@@ -4,9 +4,14 @@ import { CurrencyCard } from '@/entities/currency/ui/currency-card';
 import { useRates } from '@/entities/currency/api/use-rates';
 import Link from 'next/link';
 import { CURRENCY_PAIRS } from '@/shared/constants';
+import { MainAbout } from '@/fsd-pages/home/ui/main-about';
+import { MainStats } from '@/fsd-pages/home/ui/main-stats';
+import { MainFooter } from '@/fsd-pages/home/ui/main-footer';
 
 export function HomePage() {
   const { data: rates, isLoading, error } = useRates(CURRENCY_PAIRS.join(','));
+
+  console.log({ rates, qwe: CURRENCY_PAIRS.join(',') });
 
   return (
     <main className='flex flex-1 flex-col'>
@@ -25,7 +30,6 @@ export function HomePage() {
           View All Rates
         </Link>
       </section>
-
       <section className='mx-auto w-full max-w-5xl px-4 pb-16'>
         <h2 className='mb-6 text-xl font-semibold text-zinc-900 dark:text-zinc-50'>Major Pairs</h2>
         {isLoading && <div className='text-center text-zinc-500'>Loading rates...</div>}
@@ -40,6 +44,9 @@ export function HomePage() {
           </div>
         )}
       </section>
+      <MainAbout />
+      <MainStats />
+      <MainFooter />
     </main>
   );
 }

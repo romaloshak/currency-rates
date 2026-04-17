@@ -1,6 +1,6 @@
 'use server';
 import { GetCurrencyRateResponse } from '@/shared/model';
-import { currenciesResponse2, currencyResponse } from '@/shared/mock/currencies';
+import { currencyResponse } from '@/shared/mock/currencies';
 
 const TWELVE_DATA_API_KEY = process.env.TWELVEDATA_APIKEY;
 const BASE_URL = process.env.TWELVEDATA_DOMAIN;
@@ -12,6 +12,7 @@ export async function getCurrencyRate(symbol: string): Promise<GetCurrencyRateRe
     //   interval: '1day',
     //   outputsize: '1',
     //   format: 'JSON',
+    //   timezone: 'utc',
     // });
     //
     // const response = await fetch(
@@ -24,8 +25,9 @@ export async function getCurrencyRate(symbol: string): Promise<GetCurrencyRateRe
     // if (!response.ok) {
     //   throw new Error(`Failed to fetch ${symbol}: ${response.statusText}`);
     // }
-
-    return currenciesResponse2;
+    //
+    // return response.json();
+    return currencyResponse;
   } catch (error) {
     console.error(error);
     throw new Error(`Failed to fetch ${symbol}: ${error}`);
