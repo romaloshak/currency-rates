@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PairsPage } from '@/fsd-pages/pairs';
+import { PairsPage } from '@/fsd-pages/pairs/ui';
 
 export const dynamic = 'force-static';
 

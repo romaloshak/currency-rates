@@ -1,1 +1,0 @@
-export { PairsPage } from './ui';
