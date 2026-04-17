@@ -12,6 +12,7 @@ A web application for tracking and displaying currency exchange rates.
 - React 19
 - TanStack Query
 - Vitest
+- React Compiler (see `next.config.ts`)
 
 ## Project Architecture
 
@@ -25,10 +26,16 @@ FSD. Documentation - https://feature-sliced.design/docs/get-started/overview
 - Use Type as main type assertion
 - Use classname library to keep clean class names
 - Remember about accessibility and use at least sematic tags
+- React Compiler is enabled: rely on automatic memoization by default—do not add `useMemo` / `useCallback` unless profiling shows a real hotspot or a non-React API requires a stable reference
+- Split large screens: keep page components thin (data fetching + composition only).
+  When a page grows beyond a small screenful of JSX or mixes several distinct UI blocks, extract sections into widgets/ or entities/ (one main component per file, clear names like FooSection).
+  Prefer colocating feature-specific UI under a dedicated folder (e.g. widgets/currency-pair-screen/) rather than one oversized \*Page file.
+- For page-specific state/derivations, create custom hooks in `src/fsd-pages/<page>/model/hooks/` and keep `ui.tsx` focused on declarative markup.
+
 - To create a page:
 
 1. Make a file for it and for page component;
-2. Make another file in folder src/pages to follow FSD patterns
+2. Make another file in folder src/fsd-pages to follow FSD patterns
 
 ## Commands
 

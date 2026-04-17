@@ -1,7 +1,7 @@
 import React from 'react';
 import { CURRENCY_PAIRS } from '@/shared/constants';
 import Link from 'next/link';
-import { formattedPairToLink } from '@/shared/lib/utils/common';
+import { formattedPairToLink } from '@/entities/currency/lib/format-rate-to-url';
 
 export const PairsPage = () => {
   return (

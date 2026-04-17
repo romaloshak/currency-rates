@@ -1,7 +1,8 @@
-import { formattedPairToLink, isNil } from '@/shared/lib/utils/common';
+import { isNil } from '@/shared/lib/utils/common';
 import { ParsedRateResponse } from '@/shared/model';
 import { Temporal } from '@js-temporal/polyfill';
 import Link from 'next/link';
+import { formattedPairToLink } from '@/entities/currency/lib/format-rate-to-url';
 
 export function CurrencyCard(rate: ParsedRateResponse) {
   if (isNil(rate)) {

@@ -8,11 +8,9 @@ export const Chart = (props: { data: ParsedRate[] }) => {
   const { xScale, yScale, linePath, ticks } = getChartMath(data, PADDING);
   const prices = data.map((rate) => rate.close);
 
-  console.log({ xScale, yScale, linePath, ticks, prices });
   return (
     <div className='w-full h-80 bg-[#0f172a] p-4 rounded-xl border border-slate-800'>
       <svg viewBox='0 0 100 100' className='w-full h-full overflow-visible'>
-        {/* 1. Y-Axis Ticks & Grid */}
         <g className='grid-layer'>
           {ticks.map((tick) => (
             <g key={tick}>
