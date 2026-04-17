@@ -55,8 +55,10 @@ export const CurrencyPairsPage = ({ slug }: { slug: string }) => {
           )}
           <CurrencyHeader pairSymbol={pairSymbol} series={series} isDemoMismatch={isDemoMismatch} />
           <CurrencySnapshot stats={stats} />
-          <CurrencyChart series={series} />
-          <CurrencyOhlc series={series} recentBars={recentBars} />
+          <div className='flex justify-between flex-wrap'>
+            <CurrencyChart series={series} />
+            <CurrencyOhlc series={series} recentBars={recentBars} />
+          </div>
           <CurrencyRelated relatedPairs={relatedPairs} />
         </div>
       )}

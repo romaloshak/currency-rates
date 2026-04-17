@@ -10,11 +10,11 @@ type CurrencyOhlcProps = { series: NonNullable<UseCurrencyPairScreenResult['seri
 
 export const CurrencyOhlc = ({ series, recentBars }: CurrencyOhlcProps) => {
   return (
-    <section aria-labelledby='ohlc-heading' className='space-y-3'>
+    <section aria-labelledby='ohlc-heading' className='space-y-3 max-w-full flex-1'>
       <h2 id='ohlc-heading' className='text-lg font-semibold text-zinc-900 dark:text-zinc-50'>
         Recent OHLC
       </h2>
-      <div className='overflow-x-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900'>
+      <div className='w-full max-w-full min-w-0 overflow-x-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900'>
         <table className='w-full min-w-xl text-left text-sm'>
           <caption className='sr-only'>
             Most recent bars for {series.meta.symbol}, newest first

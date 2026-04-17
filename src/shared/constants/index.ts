@@ -6,3 +6,5 @@ export const CURRENCY_PAIRS = [
   'USD/JPY',
   'USD/CHF',
 ] as const;
+
+export const CHART_PADDING = 15;

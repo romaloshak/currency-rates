@@ -15,7 +15,7 @@ export const getChartMath = (data: ParsedRate[], padding: number) => {
 
   const yScale = scaleLinear()
     .domain(domain)
-    .nice()
+    .nice(5)
     .range([100 - padding, padding]);
 
   const lineGenerator = line<number>()
@@ -23,7 +23,7 @@ export const getChartMath = (data: ParsedRate[], padding: number) => {
     .y((d) => yScale(d))
     .curve(curveMonotoneX);
 
-  const ticks = yScale.ticks(5);
+  const ticks = yScale.ticks(6);
 
   return { xScale, yScale, linePath: lineGenerator(prices) ?? undefined, ticks };
 };
